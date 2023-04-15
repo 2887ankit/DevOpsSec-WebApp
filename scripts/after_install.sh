@@ -15,5 +15,8 @@ source venv/bin/activate
 # Install requirements.txt
 pip install -r /home/ec2-user/django-aws_cicd/requirements.txt
 
+pylint /home/ec2-user/django-aws_cicd/plant/simplecaesar.py
+pylint /home/ec2-user/django-aws_cicd/plant/simplecaesar.py > pylint_results.txt
+
 # Run server
 screen -d -m python3 manage.py runserver 0:8000
