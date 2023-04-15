@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.banner{
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    object-position: bottom;
+}
+
+.form-control {
+    display: block;
+    width: 25%;
+}
+
+.text_center{
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+.form_allignment{
+    margin: 20px 20px;
+    padding: 0px 130px;
+}
+
+
+.greetings {
+    color: #EDFBF1;
+}
+
+.heading a{
+    
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 25px;
+    color: #D4F6DD;
+    text-decoration: none;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%;
+    background: #156d74;
+}
+
+.nav_links {
+    list-style: none;
+}
+
+.nav_links li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.nav_links li a{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #57BB72;
+    text-decoration: none;
+}
+
+.nav_links li a{
+    transition: all 0.3s ease 0s;
+}
+
+.nav_links li a:hover {
+    color: #D4F6DD;
+}
+
+.signin_button button{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #57BB72;
+    text-decoration: none;
+}
+
+.signin_button button{
+    padding: 9px 25px;
+    background-color: rgba(0,0,0,1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.signin_button button:hover {
+    background-color: #D4F6DD;
+}
