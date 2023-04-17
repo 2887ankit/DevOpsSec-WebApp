@@ -12,7 +12,7 @@ def index(request):
         context = {'tallest_plants': tallest_plants} 
         return render(request, 'plants/index.html', context)
     else:
-        return redirect("index")
+        return redirect("/")
         
 # Create your views here.
 def show(request, plant_id):
