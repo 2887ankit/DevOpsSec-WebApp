@@ -1,0 +1,39 @@
+{% extends "plants/base_generic.html" %} 
+{% block content %}
+<form method="POST" class="post-form form_allignment" >  
+        {% csrf_token %}  
+        <div class="input-group mb-3">
+        <label>Plant Name
+          <input type="text" required="required" class="form-control" placeholder="Plant Name" name="name" value="{{plant.name}}">
+        </div>
+        
+        <div class="input-group mb-3">
+        <label>Country
+          <input type="text" required="required" class="form-control" placeholder="Enter the Country it is found in..." name="country" value="{{plant.country}}">
+        </label>
+        </div>
+        
+        <div class="input-group mb-3">
+        <label>Climate
+          <input type="text" required="required" class="form-control" placeholder="Enter the suitable Climate for its growth" name="climate" value="{{plant.climate}}">
+        </div>
+        
+        <div class="input-group mb-3">
+        <label>Soil
+          <input type="text" required="required" class="form-control" placeholder="Enter the soil suited for their growth" name="soil" value="{{plant.soil}}">
+        </div>
+        
+        <div class="input-group mb-3">
+        <label>Family
+          <input type="text" required="required" class="form-control" placeholder="Name the Family it belongs to" name="family" value="{{plant.family}}">
+        </div>
+        
+        <div class="input-group mb-3">
+        <label>Height
+          <input type="number" required="required" class="form-control" placeholder="Please enter the avg height of the plant" name="height" value="{{plant.height}}">
+        </div>
+        <input type="hidden" name="user_id" value="{{ current_user.id }}"/>
+        
+        <input type="submit" class="btn btn-outline-success" value="Update"/>
+    </form>
+    {% endblock content %}

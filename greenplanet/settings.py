@@ -25,7 +25,7 @@ SECRET_KEY = 'tp#^kme#39typh4jqq93go37c(=fctv18_jb!!o_tyj*ixpsz0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['944d59c695f3474186d0f3cabdfe13e3.vfs.cloud9.eu-central-1.amazonaws.com','plantsencyclopedia.eu-north-1.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['944d59c695f3474186d0f3cabdfe13e3.vfs.cloud9.eu-central-1.amazonaws.com','plantsencyclopedia.eu-north-1.elasticbeanstalk.com' , '127.0.0.1']
 
 
 # Application definition

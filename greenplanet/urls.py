@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
+from plants import views 
 
 urlpatterns = [
     path('signup/', include('users.urls')),
@@ -23,4 +24,6 @@ urlpatterns = [
     path('signout/', auth_views.LogoutView.as_view( template_name='users/signout.html'), name='sign_out'),
     path('plants/', include('plants.urls')),
     path('admin/', admin.site.urls),
+    path('update/<int:id>/', views.update, name='update'),
+    path('delete/<int:id>/', views.delete, name='delete'),
 ]
