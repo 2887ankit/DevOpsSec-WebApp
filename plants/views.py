@@ -5,19 +5,27 @@ from .models import Plant
 from django.contrib.auth import login, authenticate , logout
 from django.contrib import messages
 # Create your views here. 
-def index(request): 
-    tallest_plants = Plant.objects.order_by('-height')[:15] 
-    context = {'tallest_plants': tallest_plants} 
-    return render(request, 'plants/index.html', context)
-    
+def index(request):
+    if request.user.is_authenticated:
+        current_user=request.user
+        tallest_plants = Plant.objects.order_by('-height')[:15] 
+        context = {'tallest_plants': tallest_plants} 
+        return render(request, 'plants/index.html', context)
+    else:
+        return redirect("index")
+        
 # Create your views here.
-def show(request, plant_id): 
-    try: 
-        plant = Plant.objects.get(pk=plant_id)
-        print(plant); 
-    except Plant.DoesNotExist: 
-        raise Http404("Plant does not exist") 
-    return render(request, 'plants/show.html', {'plant': plant})
+def show(request, plant_id):
+    if request.user.is_authenticated:
+        current_user=request.user
+        try: 
+            plant = Plant.objects.get(pk=plant_id)
+            print(plant); 
+        except Plant.DoesNotExist: 
+            raise Http404("Plant does not exist") 
+        return render(request, 'plants/show.html', {'plant': plant})
+    else:
+        return redirect("/")
     
 def add_plant(request):
     if request.user.is_authenticated:
@@ -37,44 +45,52 @@ def add_plant(request):
             return redirect("/plants")
         return render(request, 'plants/add_plant.html' , {'current_user': current_user})
     else:
-        return redirect("index")
+        return redirect("/")
         
 def update(request,id):
-    try:
-        if request.method=="POST":
-            name=request.POST['name']
-            country=request.POST['country']
-            climate=request.POST['climate']
-            soil=request.POST['soil']
-            family=request.POST['family']
-            height=request.POST['height']
+    if request.user.is_authenticated:
+        current_user=request.user
+        try:
+            if request.method=="POST":
+                name=request.POST['name']
+                country=request.POST['country']
+                climate=request.POST['climate']
+                soil=request.POST['soil']
+                family=request.POST['family']
+                height=request.POST['height']
             
-            edit = Plant.objects.get(id=id)
-            edit.name = name
-            edit.country = country
-            edit.climate = climate
-            edit.soil = soil
-            edit.family = family
-            edit.height = height
-            edit.save()
-            messages.warning(request,"Plant Data Updated Successfully")
-            return redirect("/plants")
+                edit = Plant.objects.get(id=id)
+                edit.name = name
+                edit.country = country
+                edit.climate = climate
+                edit.soil = soil
+                edit.family = family
+                edit.height = height
+                edit.save()
+                messages.warning(request,"Plant Data Updated Successfully")
+                return redirect("/plants")
             
-        plant = Plant.objects.get(pk=id)
+            plant = Plant.objects.get(pk=id)
         
-    except Plant.DoesNotExist: 
-        raise Http404("Plant does not exist") 
-    return render(request, 'plants/update_plant.html' ,{'plant': plant})
+        except Plant.DoesNotExist: 
+            raise Http404("Plant does not exist") 
+        return render(request, 'plants/update_plant.html' ,{'plant': plant})
+    else:
+        return redirect("/")
     
 def delete(request,id):
-    context ={}
-    plant = Plant.objects.get(id=id)
+    if request.user.is_authenticated:
+        current_user=request.user
+        context ={}
+        plant = Plant.objects.get(id=id)
  
  
-    if request.method =="POST":
-        plant.delete()
-        messages.error(request,"Plant Data Deleted Successfully")
-        # after deleting redirect to Plant
-        return redirect("/plants")
+        if request.method =="POST":
+            plant.delete()
+            messages.error(request,"Plant Data Deleted Successfully")
+            # after deleting redirect to Plant
+            return redirect("/plants")
  
-    return render(request, "plants/delete_plant.html", context)
+        return render(request, "plants/delete_plant.html", context)
+    else:
+        return redirect("/")
