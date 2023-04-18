@@ -1,15 +1,20 @@
 {% extends "plants/base_generic.html" %} 
 {% block content %}
 <img class="banner" src="https://cdn.pixabay.com/photo/2018/08/21/23/29/forest-3622519_1280.jpg" alt="Forest">
-<h1>Plants / Trees<h1> 
-<h4>Displaying the list in descending order on the basis of their avg height</h4>
+<h1 class="text-center mt-3">Plants / Trees<h1> 
+<h4 class="text-center mt-3">Displaying the list in descending order on the basis of their avg height</h4>
+
+<div class="data-1">
 {% if tallest_plants %} 
-    <ul> 
+<ul class="list-group">
     {% for plant in tallest_plants %} 
-        <li><a href="{% url 'plants:show' plant.id %}">{{ plant.name }}</a></li> 
-    {% endfor %} 
-    </ul> 
+  <li class="list-group-item"><a href="{% url 'plants:show' plant.id %}">{{ plant.name }}</a></li>
+  {% endfor %} 
+</ul>
 {% else %} 
     <p>There are no plants recorded.</p> 
 {% endif %}
+
+</div>
+   
 {% endblock content %}

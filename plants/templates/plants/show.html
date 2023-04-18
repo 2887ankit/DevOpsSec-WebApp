@@ -1,9 +1,11 @@
 {% extends "plants/base_generic.html" %} 
 {% block content %}
 <img class="banner" src="https://cdn.pixabay.com/photo/2017/01/30/16/11/sunset-2021266_1280.jpg" alt="Forest">
-<h2>{{plant.name}} Details</h2> 
-<table>
-     <thead> 
+
+<div class="content container"> 
+<h2 class="text-center">{{plant.name}} Details</h2> 
+<table class="table ">
+     <thea > 
      </thead> 
      <tbody> 
          <tr> 
@@ -29,6 +31,8 @@
      </tbody> 
  </table>
 
- <a href="/update/{{ plant.id }}">Update</a>
- <a href="/delete/{{ plant.id }}">Delete</a>
+ <a class="btn btn-success" href="/update/{{ plant.id }}">Update</a>
+ <a class="btn btn-danger" href="/delete/{{ plant.id }}">Delete</a>
+ 
+ </div>
  {% endblock content %}
