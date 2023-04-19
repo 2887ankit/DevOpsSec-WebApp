@@ -4,7 +4,8 @@
     <div class="text_center"> <p>You are signed in {{user.username}}... 
         Go to... <a href="plants">Plants List</a></p>
         <p>Or add Plants <a href="/plants/add_plant">Add Plants</a></p>
-{% else %} 
+{% else %}
+    <h2 class="text_center">Welcome to the encyclopedia Scholars and Entusiats</h2>
     <form class=" signin-form" method="POST"> 
         {% csrf_token %} 
         {{ form.as_p }} 
